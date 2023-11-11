@@ -1,0 +1,1 @@
+export {webpackDevConfig} from "./webpack.dev.config";
