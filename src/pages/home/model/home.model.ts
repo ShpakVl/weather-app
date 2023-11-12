@@ -15,6 +15,6 @@ export class HomeModel {
 
  private async onSearch(cityName: string) {
   const response = await this.weatherModel.search(cityName);
-  if (response) this.history.add({ label: cityName, id: cityName });
+  if (response) this.history.add({ label: cityName, id: cityName.toLowerCase() });
  }
 }

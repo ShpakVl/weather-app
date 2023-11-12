@@ -14,8 +14,10 @@ interface HistoryProps {
 
 export const HistoryList = observer(({ model, onClick }: HistoryProps): JSX.Element => {
  const handleClick = (cityName: string) => {
-  model.setActive(cityName);
-  onClick(cityName);
+  if (model.getActive()?.id !== cityName) {
+   model.setActive(cityName);
+   onClick(cityName);
+  }
  };
 
  return (
