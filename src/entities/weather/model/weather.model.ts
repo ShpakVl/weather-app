@@ -1,4 +1,4 @@
-import { RequestHandler } from '@/shared/lib/request-handler/request-handler';
+import { RequestHandler } from '@/shared/lib/helpers/request-handler';
 import { getWeather } from '../api/get-weather';
 import { makeAutoObservable } from 'mobx';
 

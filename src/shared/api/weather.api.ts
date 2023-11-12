@@ -5,6 +5,7 @@ export interface GetWeatherResponse {
   {
    main: string;
    description: string;
+   icon: string;
   },
  ];
  main: {

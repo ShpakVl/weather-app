@@ -2,6 +2,7 @@ export type Weather = {
  weather: {
   main: string;
   description: string;
+  icon: string;
  };
  temp: number;
  temp_max: number;

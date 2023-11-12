@@ -1,4 +1,4 @@
-import { flow, makeAutoObservable, observable, runInAction } from 'mobx';
+import { flow, makeAutoObservable } from 'mobx';
 
 type Query<Params extends any[], Response> = (...params: Params) => Promise<Response>;
 
