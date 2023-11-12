@@ -6,8 +6,8 @@ import { History } from '@/shared/lib/history';
 export class HomeModel {
  public history = new History<{ label: string; id: string }>();
 
- weatherModel = new WeatherModel();
- searchByCityModel = new SearchByCityModel(this.onSearch.bind(this));
+ public weatherModel = new WeatherModel();
+ public searchByCityModel = new SearchByCityModel(this.onSearch.bind(this));
 
  constructor() {
   makeAutoObservable(this);

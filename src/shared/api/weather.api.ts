@@ -21,7 +21,7 @@ export interface GetWeatherResponse {
 
 export class WeatherApi {
  getWeather(cityName: string): AxiosPromise<GetWeatherResponse> {
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}`;
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric`;
   return axios.get(url);
  }
 }

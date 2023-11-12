@@ -1,6 +1,7 @@
-import { GetWeatherResponse } from '@/shared/api/weather.api';
+import { GetWeatherResponse } from '@/shared/api/';
+import { Weather } from '../model/types';
 
-export const weatherMapper = (response: GetWeatherResponse) => {
+export const weatherMapper = (response: GetWeatherResponse): Weather => {
  return {
   id: response.id,
   weather: {

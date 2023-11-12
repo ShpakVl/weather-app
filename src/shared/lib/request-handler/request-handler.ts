@@ -1,13 +1,12 @@
-import { AxiosPromise } from 'axios';
-import { flow, makeAutoObservable } from 'mobx';
+import { flow, makeAutoObservable, observable, runInAction } from 'mobx';
 
-type Query<Params extends any[], Response> = (...params: Params) => AxiosPromise<Response> | Response;
+type Query<Params extends any[], Response> = (...params: Params) => Promise<Response>;
 
 export class RequestHandler<Params extends any[], Response, Error> {
  public isLoading = false;
  public isError = false;
- public data?: Response;
- public error?: Error;
+ public data?: Response = undefined;
+ public error?: Error = undefined;
 
  private query?: Query<Params, Response> = undefined;
 
@@ -31,7 +30,6 @@ export class RequestHandler<Params extends any[], Response, Error> {
   } finally {
    this.isLoading = false;
   }
-
   return this.data;
  }
 }
