@@ -6,7 +6,7 @@ export class WeatherModel {
  request = new RequestHandler(getWeather);
 
  constructor() {
-  makeAutoObservable(this);
+  makeAutoObservable(this, undefined, { autoBind: true });
  }
 
  search(cityName: string) {

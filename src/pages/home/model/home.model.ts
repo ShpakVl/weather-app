@@ -10,7 +10,7 @@ export class HomeModel {
  public searchByCityModel = new SearchByCityModel(this.onSearch.bind(this));
 
  constructor() {
-  makeAutoObservable(this);
+  makeAutoObservable(this, undefined, { autoBind: true });
  }
 
  private async onSearch(cityName: string) {

@@ -17,7 +17,7 @@ export const Home = observer((): JSX.Element => {
     isError={homeModel.weatherModel.isError}
     weather={homeModel.weatherModel.data}
    />
-   <HistoryList model={homeModel.history} />
+   <HistoryList model={homeModel.history} onClick={homeModel.weatherModel.search} />
   </Header>
  );
 });

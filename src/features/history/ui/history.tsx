@@ -8,17 +8,22 @@ import { toJS } from 'mobx';
 
 interface HistoryProps {
  model: History<HistoryElement>;
+ onClick: (cityName: string) => void;
 }
 
-export const HistoryList = observer(({ model }: HistoryProps): JSX.Element => {
+export const HistoryList = observer(({ model, onClick }: HistoryProps): JSX.Element => {
+ const handleClick = (cityName: string) => {
+  model.setActive(cityName);
+  onClick(cityName);
+ };
+
  return (
   <Card>
    <Typography.Title>Search history</Typography.Title>
    <List
-    className='demo-loadmore-list'
     itemLayout='horizontal'
     dataSource={toJS(model.historyElements)}
-    renderItem={item => <HistoryItem item={item} onDelete={model.remove} />}
+    renderItem={item => <HistoryItem item={item} onDelete={model.remove} onClick={handleClick} />}
    />
   </Card>
  );
