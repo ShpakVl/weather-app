@@ -1,5 +1,5 @@
 import { AxiosPromise } from 'axios';
-import { flow } from 'mobx';
+import { flow, makeAutoObservable } from 'mobx';
 
 type Query<Params extends any[], Response> = (...params: Params) => AxiosPromise<Response> | Response;
 
@@ -13,9 +13,10 @@ export class RequestHandler<Params extends any[], Response, Error> {
 
  constructor(query: Query<Params, Response>) {
   this.query = query;
+  makeAutoObservable(this, { fetch: flow });
  }
 
- public fetch = flow(function* (this, ...params: Params) {
+ public *fetch(this, ...params: Params) {
   try {
    this.isLoading = true;
    this.isError = false;
@@ -32,5 +33,5 @@ export class RequestHandler<Params extends any[], Response, Error> {
   }
 
   return this.data;
- });
+ }
 }
