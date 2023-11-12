@@ -1,11 +1,11 @@
 import React from 'react';
 import { Empty } from 'antd';
 import { observer } from 'mobx-react-lite';
-import { WeatherModel } from '../../model/weather.model';
-import { Weather } from '../../model/types';
 import { StyledSkeleton } from './styles';
 import { StyledCard } from '@/shared/ui/styled-card';
-import { WeatherCardBody } from '@/entities/weather/ui/weather-card/weather-card-body';
+import { WeatherCardBody } from './weather-card-body';
+import { WeatherModel } from '../../model/weather.model';
+import { Weather } from '../../model/types';
 
 interface WeatherCardProps extends Pick<WeatherModel, 'isLoading' | 'isError'> {
  weather?: Weather;

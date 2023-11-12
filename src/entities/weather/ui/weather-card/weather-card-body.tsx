@@ -1,5 +1,5 @@
 import { Flex, Typography, Image } from 'antd';
-import { imageUrl } from '@/shared/lib/constants/image-url';
+import { imageUrl } from '@/shared/lib';
 import { Weather } from '../../model/types';
 import { weatherCardBodyStyles } from './styles';
 
