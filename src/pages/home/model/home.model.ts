@@ -1,7 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 import { WeatherModel } from '@/entities/weather';
 import { SearchByCityModel } from '@/features/search-by-city';
-import { History } from '@/shared/lib/history';
+import { History } from '@/features/history';
 
 export class HomeModel {
  public history = new History<{ label: string; id: string }>();
@@ -13,8 +13,8 @@ export class HomeModel {
   makeAutoObservable(this);
  }
 
- private onSearch(cityName: string) {
-  this.weatherModel.search(cityName);
-  this.history.add({ label: cityName, id: cityName });
+ private async onSearch(cityName: string) {
+  const response = await this.weatherModel.search(cityName);
+  if (response) this.history.add({ label: cityName, id: cityName });
  }
 }

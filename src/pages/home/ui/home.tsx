@@ -4,6 +4,8 @@ import { SearchByCity } from '@/features/search-by-city';
 import { WeatherCard } from '@/entities/weather/';
 import { HomeModel } from '../model/home.model';
 import { observer } from 'mobx-react-lite';
+import { HistoryList } from '@/features/history/ui/history';
+import { Empty } from 'antd';
 
 export const Home = observer((): JSX.Element => {
  const homeModel = useMemo(() => new HomeModel(), []);
@@ -15,6 +17,7 @@ export const Home = observer((): JSX.Element => {
     isError={homeModel.weatherModel.isError}
     weather={homeModel.weatherModel.data}
    />
+   <HistoryList model={homeModel.history} />
   </Header>
  );
 });

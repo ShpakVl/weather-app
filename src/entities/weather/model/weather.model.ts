@@ -10,7 +10,7 @@ export class WeatherModel {
  }
 
  search(cityName: string) {
-  this.request?.fetch(cityName);
+  return this.request?.fetch(cityName);
  }
 
  public get isLoading() {

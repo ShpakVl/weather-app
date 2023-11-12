@@ -5,18 +5,20 @@ interface HistoryElement {
 }
 type HistoryElementId = HistoryElement['id'];
 
-export class History<T extends HistoryElement> {
+export class History<T extends HistoryElement = HistoryElement> {
  private elements: T[] = [];
 
  constructor() {
-  makeAutoObservable(this);
+  makeAutoObservable(this, {}, { autoBind: true });
  }
 
  public add(element: T) {
   if (!this.get(element.id)) this.elements.unshift(element);
   else this.setActive(element.id);
  }
-
+ public get historyElements() {
+  return this.elements;
+ }
  public get(elementId: HistoryElementId) {
   return this.elements.find(element => element.id === elementId);
  }
