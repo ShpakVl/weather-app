@@ -34,6 +34,7 @@ export default ({ mode = Mode.DEVELOPMENT, port = 3000 }: EnvVariable) => {
    path: path.resolve(basePath, 'dist'),
    clean: true,
   },
+
   optimization: {
    splitChunks: {
     cacheGroups: {
@@ -45,6 +46,11 @@ export default ({ mode = Mode.DEVELOPMENT, port = 3000 }: EnvVariable) => {
     },
    },
   },
+
+  performance: {
+   hints: false,
+  },
+
   plugins: webpackPluginsConfig(path.resolve(basePath)),
  };
 };

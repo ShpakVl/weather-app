@@ -12,12 +12,12 @@ export const WeatherCardBody = ({ weather }: WeatherCardBodyProps) => {
 
  return (
   <Flex vertical style={weatherCardBodyStyles.cardBodyWrapper}>
-   <Image src={imageUrl(weather.weather.icon)} height='100px' width='100px' preview={false} />
+   <Image src={imageUrl(weather.weather.icon)} height='120px' width='120px' preview={false} />
    <Flex vertical>
     <Typography.Text style={weatherCardBodyStyles.cardText}>{weatherCardTitle}</Typography.Text>
-    <Typography.Text style={weatherCardBodyStyles.cardText}>Current temperature: {weather?.temp}</Typography.Text>
-    <Typography.Text style={weatherCardBodyStyles.cardText}>Min temperature: {weather?.temp_min}</Typography.Text>
-    <Typography.Text style={weatherCardBodyStyles.cardText}>Max temperature: {weather?.temp_max}</Typography.Text>
+    <Typography.Text style={weatherCardBodyStyles.cardText}>Current temperature: {weather?.temp}°</Typography.Text>
+    <Typography.Text style={weatherCardBodyStyles.cardText}>Min temperature: {weather?.temp_min}°</Typography.Text>
+    <Typography.Text style={weatherCardBodyStyles.cardText}>Max temperature: {weather?.temp_max}°</Typography.Text>
     <Typography.Text style={weatherCardBodyStyles.cardText}>Wind speed: {weather?.windSpeed}</Typography.Text>
    </Flex>
   </Flex>

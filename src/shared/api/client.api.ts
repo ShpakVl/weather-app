@@ -4,7 +4,7 @@ import { WeatherApi } from './weather.api';
 import { API_KEY } from './client.config';
 
 class ClientApi {
- public weather = new WeatherApi();
+ public weatherApi = new WeatherApi();
 
  private init() {
   axios.defaults.params = { appid: API_KEY };

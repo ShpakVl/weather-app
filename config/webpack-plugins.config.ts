@@ -3,7 +3,6 @@ import path from 'path';
 import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
-import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 export const webpackPluginsConfig = (basePath: string) => {
  return [
   new HtmlWebpackPlugin({ template: path.resolve(basePath, 'public', 'index.html') }),
@@ -13,6 +12,6 @@ export const webpackPluginsConfig = (basePath: string) => {
    chunkFilename: 'css/[name].[contenthash:8].css',
   }),
   new webpack.HotModuleReplacementPlugin(),
-  new BundleAnalyzerPlugin(),
+  //new BundleAnalyzerPlugin(),
  ];
 };
