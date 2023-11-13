@@ -32,12 +32,5 @@ module.exports = {
   'react/react-in-jsx-scope': 'off',
   'arrow-spacing': ['error', { before: true, after: true }],
   'space-before-blocks': ['error', 'always'],
-  '@typescript-eslint/type-annotation-spacing': [
-   'warn',
-   {
-    before: false,
-    after: true,
-   },
-  ],
  },
 };

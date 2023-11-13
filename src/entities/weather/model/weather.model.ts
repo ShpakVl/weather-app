@@ -1,9 +1,11 @@
 import { RequestHandler } from '@/shared/lib/';
 import { getWeather } from '../api/get-weather';
 import { makeAutoObservable } from 'mobx';
+import { message } from 'antd';
+import { AxiosError } from 'axios';
 
 export class WeatherModel {
- request = new RequestHandler(getWeather);
+ request = new RequestHandler(getWeather, (error: AxiosError) => message.error(error.message));
 
  constructor() {
   makeAutoObservable(this, undefined, { autoBind: true });

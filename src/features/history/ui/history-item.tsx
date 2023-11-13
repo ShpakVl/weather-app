@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, List } from 'antd';
 import { History } from '../model/history.store';
 import { HistoryElement } from '../model/types';
-import { historyStyles } from './styles';
+import { StyledHistoryItem } from './styles';
 
 interface HistoryItemProps {
  item: HistoryElement;
@@ -12,7 +12,7 @@ interface HistoryItemProps {
 
 export const HistoryItem = ({ item, onDelete, onClick }: HistoryItemProps): JSX.Element => {
  return (
-  <List.Item
+  <StyledHistoryItem
    actions={[
     <Button
      key='deleteButton'
@@ -23,9 +23,8 @@ export const HistoryItem = ({ item, onDelete, onClick }: HistoryItemProps): JSX.
      Remove
     </Button>,
    ]}
-   style={historyStyles.historyItem}
    onClick={() => onClick(item.id)}>
    <List.Item.Meta title={item.label} />
-  </List.Item>
+  </StyledHistoryItem>
  );
 };

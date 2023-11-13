@@ -1,10 +1,13 @@
 import styled from '@emotion/styled';
-import { Card, CardProps } from 'antd';
+import { Card } from 'antd';
 import { cardMaxWidth } from '@/shared/lib';
 
-const CardStyles = styled(Card)`
+export const StyledCard = styled(Card)`
  width: 50%;
  height: 400px;
  max-width: ${cardMaxWidth}px;
+
+ & .ant-card-body {
+  padding: 0 !important;
+ }
 `;
-export const StyledCard = (props: CardProps) => <CardStyles {...props} />;

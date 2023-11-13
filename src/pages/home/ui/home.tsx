@@ -3,7 +3,7 @@ import { SearchByCity } from '@/features/search-by-city';
 import { WeatherCard } from '@/entities/weather/';
 import { HomeModel } from '../model/home.model';
 import { observer } from 'mobx-react-lite';
-import { HistoryList } from '@/features/history/ui/history';
+import { HistoryList } from '@/features/history';
 import { Flex, Layout } from 'antd';
 import { homeStyles } from './styles';
 import { cardGap } from '@/shared/lib';
@@ -20,7 +20,7 @@ export const Home = observer((): JSX.Element => {
      isError={homeModel.weatherModel.isError}
      weather={homeModel.weatherModel.data}
     />
-    <HistoryList model={homeModel.history} onClick={homeModel.weatherModel.search} />
+    <HistoryList model={homeModel.history} searchCity={homeModel.weatherModel.search} />
    </Flex>
   </Layout>
  );

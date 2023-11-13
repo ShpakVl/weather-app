@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack server --open --env mode=development",
-    "build:prod": "webpack server --open --env mode=production"
+    "build:prod": "webpack server --open --env mode=production",
+    "lint:fix": "eslint ./src --ext .js,.jsx,.ts,.tsx --fix --quiet"
   },
   "keywords": [],
   "author": "",
