@@ -15,7 +15,7 @@ interface WeatherCardProps extends Pick<WeatherModel, 'isLoading' | 'isError'> {
 export const WeatherCard = observer(({ isLoading, weather, isError }: WeatherCardProps): JSX.Element => {
  return (
   <StyledCard title={weather?.name} bodyStyle={stretchedStyles}>
-   <StyledSkeleton loading={isLoading} active paragraph={{ rows: 4 }}>
+   <StyledSkeleton loading={isLoading} active paragraph={{ rows: 0 }}>
     {!weather && !isError && <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} style={stretchedStyles} />}
     {weather && <WeatherCardBody weather={weather} />}
    </StyledSkeleton>
