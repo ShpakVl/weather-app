@@ -1,7 +1,5 @@
 import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import webpack from 'webpack';
-import { webpackDevConfig } from './config';
+import { webpackDevConfig, webpackLoadersConfig, webpackPluginsConfig, webpackResolversConfig } from './config';
 
 enum Mode {
  DEVELOPMENT = 'development',
@@ -13,51 +11,40 @@ interface EnvVariable {
  port?: number;
 }
 
-export default ({ mode = Mode.PRODUCTION, port = 3000 }: EnvVariable) => {
+export default ({ mode = Mode.DEVELOPMENT, port = 3000 }: EnvVariable) => {
  const isDev = mode === Mode.DEVELOPMENT;
- const srcPath = path.resolve(__dirname, 'src');
+ const basePath = path.resolve(__dirname);
+ const srcPath = path.resolve(basePath, 'src');
 
  return {
   mode,
   entry: path.resolve(srcPath, 'index.ts'),
-  ...(isDev ? webpackDevConfig(port) : undefined),
+
+  devtool: isDev ? 'inline-source-map' : undefined,
+  devServer: isDev ? webpackDevConfig(port) : undefined,
 
   module: {
-   rules: [
-    {
-     test: /\.tsx?$/,
-     use: 'ts-loader',
-     exclude: /node_modules/,
-    },
-
-    {
-     test: /\.(css|s[ac]ss)$/i,
-     use: ['style-loader', 'css-loader', 'sass-loader'],
-    },
-   ],
+   rules: webpackLoadersConfig(isDev),
   },
 
-  resolve: {
-   extensions: ['.tsx', '.ts', '.js'],
-   modules: [path.resolve(__dirname, 'node_modules')],
-   alias: {
-    '@/app': path.resolve(srcPath, 'app'),
-    '@/shared': path.resolve(srcPath, 'shared'),
-    '@/features': path.resolve(srcPath, 'features'),
-    '@/entities': path.resolve(srcPath, 'entities'),
-    '@/pages': path.resolve(srcPath, 'pages'),
-   },
-  },
+  resolve: webpackResolversConfig(srcPath, basePath),
 
   output: {
    filename: '[name].[contenthash].js',
-   path: path.resolve(__dirname, 'dist'),
+   path: path.resolve(basePath, 'dist'),
    clean: true,
   },
-
-  plugins: [
-   new HtmlWebpackPlugin({ template: path.resolve(__dirname, 'public', 'index.html') }),
-   new webpack.ProgressPlugin(),
-  ],
+  optimization: {
+   splitChunks: {
+    cacheGroups: {
+     vendor: {
+      test: /[\\/]node_modules[\\/]/,
+      name: 'vendor',
+      chunks: 'all',
+     },
+    },
+   },
+  },
+  plugins: webpackPluginsConfig(path.resolve(basePath)),
  };
 };
