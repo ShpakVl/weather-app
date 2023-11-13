@@ -35,7 +35,7 @@ export class RequestHandler<Params extends any[], Response, Error> {
    this.isLoading = true;
    this.isError = false;
    this.error = undefined;
-
+   this.data = undefined;
    this.data = yield this.query?.(...params);
   } catch (err: unknown) {
    this.isError = true;
