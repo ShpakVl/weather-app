@@ -4,6 +4,11 @@ import { makeAutoObservable } from 'mobx';
 import { message } from 'antd';
 import { AxiosError } from 'axios';
 
+//@ WeatherModel
+//* Model integrate component with API
+//* search -> api call to get weather by city name
+//* isLoading, isError, data, error -> request data, it`s statuses
+
 export class WeatherModel {
  request = new RequestHandler(getWeather, (error: AxiosError) => message.error(error.message));
 

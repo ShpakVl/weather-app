@@ -20,6 +20,10 @@ export interface GetWeatherResponse {
  name: string;
 }
 
+//@ WeatherApi
+//* Integration with weather Api
+//* getWeather -> request to get weather by cityName
+
 export class WeatherApi {
  getWeather(cityName: string): AxiosPromise<GetWeatherResponse> {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric`;

@@ -1,6 +1,6 @@
 import React from 'react';
 import { HistoryElement } from '../model/types';
-import { History } from '../model/history.store';
+import { HistoryModel } from '../model/history.store';
 import { HistoryItem } from './history-item';
 import { observer } from 'mobx-react-lite';
 import { toJS } from 'mobx';
@@ -8,7 +8,7 @@ import { StyledCard } from '@/shared/ui/styled-card';
 import { StyledList } from '@/features/history/ui/styles';
 
 interface HistoryProps {
- model: History<HistoryElement>;
+ model: HistoryModel<HistoryElement>;
  searchCity: (cityName: string) => void;
 }
 

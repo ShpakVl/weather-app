@@ -2,6 +2,19 @@ import { flow, makeAutoObservable } from 'mobx';
 
 type Query<Params extends any[], Response> = (...params: Params) => Promise<Response>;
 type OnError<Error> = (error: Error) => void;
+
+//@ RequestHandler
+//* Provide standard methods for comfortable work with Api calls
+//* - ARGUMENTS -
+//* query -> api request callback
+//* onError -> callback to handle errors in request (ex. show notification)
+//* - METHODS -
+//* fetch -> generator function to handle Api calls
+//* isLoading -> is request loading
+//* isError -> is request failed
+//* data -> response
+//* error -> request error object
+
 export class RequestHandler<Params extends any[], Response, Error> {
  public isLoading = false;
  public isError = false;

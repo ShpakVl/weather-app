@@ -5,7 +5,16 @@ interface HistoryElement {
 }
 type HistoryElementId = HistoryElement['id'];
 
-export class History<T extends HistoryElement = HistoryElement> {
+//@ History
+//* Model to work with history feature
+//* add -> add item to history if it`s not exist yet, otherwise it set it as active
+//* historyElements -> getter, returns all history items
+//* get -> get item from history list by id
+//* remove -> remove item from history list by id
+//* getActive -> get active item (first element form history elements list)
+//* setActive -> move item as active, move it to the beginning of history elements list
+
+export class HistoryModel<T extends HistoryElement = HistoryElement> {
  private elements: T[] = [];
 
  constructor() {

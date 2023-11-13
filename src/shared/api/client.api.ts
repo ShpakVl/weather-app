@@ -3,6 +3,10 @@ import axios from 'axios';
 import { WeatherApi } from './weather.api';
 import { API_KEY } from './client.config';
 
+//@ ClientApi
+//* Composite class for Api integrations, axios setup
+//* New APIs integration should be added here
+
 class ClientApi {
  public weatherApi = new WeatherApi();
 

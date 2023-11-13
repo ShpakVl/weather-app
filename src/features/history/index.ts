@@ -1,2 +1,2 @@
 export { HistoryList } from './ui/history-list';
-export { History } from './model/history.store';
+export { HistoryModel } from './model/history.store';
